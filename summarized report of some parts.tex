@@ -1,0 +1,81 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+
+\title{BHN}
+% \author{elromina79}
+\date{May 2023}
+
+\usepackage{float}
+\usepackage{svg}
+\usepackage{titlesec}
+\newcommand*{\justifyheading}{\raggedright}
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries\justifyheading}{\chaptertitlename\ \thechapter}
+  {20pt}{\Huge}
+\titleformat{\section}
+  {\normalfont\Large\bfseries\justifyheading}{\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\justifyheading}{\thesubsection}{1em}{}
+\usepackage{geometry}
+\geometry{margin=1.5in, voffset=-0.5in}
+\begin{document}
+
+\maketitle
+
+\section{Average-Resampling Order}
+
+The primary idea was that first getting average and then resampling would give better results, because of losing less data. So the experiment was to test both types of orders and compare the results; First to get the average, then resample. Second to get the resample, then average.
+By comparing the results, it is concluded that there is less noise with the first way. Also, by analyzing the BN signal in this way, we can see that output from the first way is more favorable to the characteristic of the original signals.
+
+\bigskip
+\begin{figure}[H]
+\centering
+\includesvg[width=5.0in]{comparing_avg_rsmpl_B}
+\caption{B}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includesvg[width=5.0in]{comparing_avg_rsmpl_H}
+\caption{H}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includesvg[width=5.0in]{comparing_avg_rsmpl_BN}
+\caption{BN}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includesvg[width=5.0in]{comparing_avg_rsmpl_diff}
+\caption{difference between the two ways}
+\end{figure}
+
+\bigskip
+\section{Optimization}
+
+The first test was done with the following training options:
+\begin{itemize}
+    \item rmsprop
+    \item lr=0.001 
+    \item epochs=300
+\end{itemize}
+And the following layers:
+\begin{itemize}
+    \item one lstm layer=256
+    \item dropout=0.5
+\end{itemize}
+The result is shown in \figurename{\ref{trained_on_DB4DL_1_1_0_1_sqrt_2_2500_rmsprop_lr_001_epch_300_lstm_256_onelayer_dropout_5}}. According to this, 50 epochs would be enough, so the optimization process went with epochs=50. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=5.0in]{trained_on_DB4DL_1_1_0_1_sqrt_2_2500_rmsprop_lr_001_epch_300_lstm_256_onelayer_dropout_5.png}
+\caption{rmsprop, lr=0.001, epochs=300, lstm=256, dropout=0.5, one layer}
+\label{trained_on_DB4DL_1_1_0_1_sqrt_2_2500_rmsprop_lr_001_epch_300_lstm_256_onelayer_dropout_5}
+\end{figure}
+
+\bigskip
+\subsection{lr=0.001, epochs=50, one lstm layer=256, dropout=0.5}
+
+\end{document}
