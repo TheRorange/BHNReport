@@ -66,16 +66,68 @@ And the following layers:
     \item one lstm layer=256
     \item dropout=0.5
 \end{itemize}
+ON the dataset with the following features:
+\begin{itemize}
+    \item filtered
+    \item resampled 10x
+    \item augmented with the average of the signals(BN signal divider: \sqrt{2})
+\end{itemize}
+\newpage
 The result is shown in \figurename{\ref{trained_on_DB4DL_1_1_0_1_sqrt_2_2500_rmsprop_lr_001_epch_300_lstm_256_onelayer_dropout_5}}. According to this, 50 epochs would be enough, so the optimization process went with epochs=50. 
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=5.0in]{trained_on_DB4DL_1_1_0_1_sqrt_2_2500_rmsprop_lr_001_epch_300_lstm_256_onelayer_dropout_5.png}
-\caption{rmsprop, lr=0.001, epochs=300, lstm=256, dropout=0.5, one layer}
+\caption{rmsprop, lr=0.001, batch=64, epochs=300, lstm=256, dropout=0.5, one layer}
 \label{trained_on_DB4DL_1_1_0_1_sqrt_2_2500_rmsprop_lr_001_epch_300_lstm_256_onelayer_dropout_5}
 \end{figure}
 
 \bigskip
-\subsection{lr=0.001, epochs=50, one lstm layer=256, dropout=0.5}
+\subsection{lr=0.001, batch=32, epochs=50, one lstm layer=256, dropout=0.5}
+validation accuracy = 91.04\%
+\\
+test accuracy = 91.23\%
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=5.0in]{acc_trained_on_DB4DL_1_1_0_1_sqrt_2_2500_rmsprop_lr_001_epch_50_batch_32_lstm_256_onelayer_dropout_5.png}
+\caption{train and loss accuracy}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=5.0in]{loss_trained_on_DB4DL_1_1_0_1_sqrt_2_2500_rmsprop_lr_001_epch_50_batch_32_lstm_256_onelayer_dropout_5.png}
+\caption{train and loss plot}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=5.0in]{trained_on_DB4DL_1_1_0_1_sqrt_2_2500_rmsprop_lr_001_batch_32_epch_50_lstm_256_onelayer_dropout_5.png}
+\caption{result}
+\end{figure}
+
+\bigskip
+\subsection{lr=0.01, batch=32, epochs=50, one lstm layer=256, dropout=0.5}
+validation accuracy = 72.57\%
+\\
+test accuracy = 71.09\%
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=5.0in]{acc_trained_on_DB4DL_1_1_0_1_sqrt_2_2500_rmsprop_lr_01_epch_50_batch_32_lstm_256_onelayer_dropout_5.png}
+\caption{train and loss accuracy}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=5.0in]{loss_trained_on_DB4DL_1_1_0_1_sqrt_2_2500_rmsprop_lr_01_epch_50_batch_32_lstm_256_onelayer_dropout_5.png}
+\caption{train and loss plot}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=5.0in]{trained_on_DB4DL_1_1_0_1_sqrt_2_2500_rmsprop_lr_01_batch_32_epch_50_lstm_256_onelayer_dropout_5.png}
+\caption{result}
+\end{figure}
 
 \end{document}
